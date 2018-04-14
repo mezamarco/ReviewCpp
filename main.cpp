@@ -45,7 +45,7 @@ int main(){
 
   */
    int theValue = 5;
-   std::cout << "Starting with theValue: 5\n";
+   std::cout << "\nStarting with theValue: 5\n";
 
    std::cout << "theValue++ = " << theValue++ << std::endl;  //5
    std::cout << "++theValue = " << ++theValue << std::endl;  //7
@@ -63,7 +63,7 @@ int main(){
 
 
 
-  //Switch Statements are good If there exist just a few cases.
+  //Switch Statements: Use if there exist only a small limited amount of cases
   int caseNumber = 3;
 
   switch(caseNumber){
@@ -91,16 +91,23 @@ int main(){
   //variable = ( (condition) ? true:false);
   int largerNumber = ((5>2) ? 5:2);   //Since the condition is true then the number 5 is assigned to largerNumber
  
-  std::cout << "The value of the larger number is: " << largerNumber << std::endl;
+  std::cout << "\nSwitch Statement: The value of the larger number is: " << largerNumber << std::endl;
 
   //Arrays (Arrays are just boxes)
-  double numOfBoxes[5]= {6,7,8,9,10};
-  int arr[3] = {4,5,6,}; 		//Note that everybox is 4 bytes => 3 boxes * 4 =   arr is 12 bytes
+  double numOfBoxes[5]= {6,7,8,9,10};   //Note that every double box is 8 bytes => 5 boxes * 8  = 40 bytes
+  int arr[5] = {4,5,6,7,8}; 		//Note that every int box is 4 bytes => 5 boxes * 4 = 20 bytes
+  char charArr[5] = {'a','b','c','d','e'};   //Note that every char box is 1 byte => 5 boxes * 1 byte = 5 bytes 
 
 
-  std::cout << "An array of 3 integer boxes has the size of: " << sizeof(arr) << " bytes." <<std::endl;
+  std::cout << "\nAn array of 5 character boxes has the size of: " 
+	  << sizeof(charArr) << " bytes." <<std::endl; //Prints: 5 bytes
+  
+  std::cout << "An array of 5 integer boxes has the size of: " 
+	  << sizeof(arr) << " bytes." <<std::endl; //Prints: 20 bytes
 
-  std::cout << "An array of 5 double boxes has the size of: " << sizeof(numOfBoxes) << " bytes." <<std::endl;
+  std::cout << "An array of 5 double boxes has the size of: " 
+	  << sizeof(numOfBoxes) << " bytes." <<std::endl; //Prints: 40 bytes
+ 
 
 
   //Multidimensional Array
@@ -108,7 +115,7 @@ int main(){
   char myName[2][5] = { {'M','A','R','C','O'},
 	  		{'M','E','Z','A'} };
 
-  std::cout << "A multi-dimensional array of 10 char boxes has the size of: " << sizeof(myName) << " bytes." <<std::endl;
+  std::cout << "\nA multi-dimensional array of 10 char boxes has the size of: " << sizeof(myName) << " bytes." <<std::endl;
 
   std::cout << "In my multiDimensional Array, the position [1][2] holds: " << myName[1][2]<< std::endl; 
   std::cout << "In my multiDimensional Array, the position that is empty [1][4] holds: " << myName[1][4]<< std::endl;
@@ -154,8 +161,7 @@ int main(){
 	int j = theWord.length()-1;
  
  	while (i<j){
-          
-	   
+        		
           if(theWord[i] == theWord[j]){
 	     ++i;
 	     --j;
