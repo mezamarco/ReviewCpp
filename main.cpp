@@ -26,17 +26,17 @@ int main(){
 
   /*PreIncrement vs PostIncrement
   
-  Note that PostIncrement has to create a copy and therefore PreIncrement is better
+  Note that PostIncrement has to create a copy and therefore PreIncrement is a bit faster
 
   Image the following functions
 
 
-  int preIncrement(int &i){
+  int preIncrement(int &i){			//Pass-by-reference
   	i = i+1;
 	return i;
   }
 
-  int postIncrement(int  &j){
+  int postIncrement(int  &j){		       	//Pass-by-reference
   	int original = j;
 	j = j+1;
 	return original;
@@ -86,7 +86,7 @@ int main(){
 
 
 
-  //Turnary Operators, will assign a value depending if a condition is true or false
+  //Turnary Operators, Assigns a value depending if a condition is true or false
   //Use the following template
   //variable = ( (condition) ? true:false);
   int largerNumber = ((5>2) ? 5:2);   //Since the condition is true then the number 5 is assigned to largerNumber
@@ -94,16 +94,26 @@ int main(){
   std::cout << "The value of the larger number is: " << largerNumber << std::endl;
 
   //Arrays (Arrays are just boxes)
-  int numOfBoxes[5];
-  int arr[3] = {4,5,6,};
+  double numOfBoxes[5]= {6,7,8,9,10};
+  int arr[3] = {4,5,6,}; 		//Note that everybox is 4 bytes => 3 boxes * 4 =   arr is 12 bytes
+
+
+  std::cout << "An array of 3 integer boxes has the size of: " << sizeof(arr) << " bytes." <<std::endl;
+
+  std::cout << "An array of 5 double boxes has the size of: " << sizeof(numOfBoxes) << " bytes." <<std::endl;
+
 
   //Multidimensional Array
 
   char myName[2][5] = { {'M','A','R','C','O'},
 	  		{'M','E','Z','A'} };
 
-  std::cout << "In my multiDimensional Array, the position [1][2] holds: " << myName[1][2]<< std::endl; 
+  std::cout << "A multi-dimensional array of 10 char boxes has the size of: " << sizeof(myName) << " bytes." <<std::endl;
 
+  std::cout << "In my multiDimensional Array, the position [1][2] holds: " << myName[1][2]<< std::endl; 
+  std::cout << "In my multiDimensional Array, the position that is empty [1][4] holds: " << myName[1][4]<< std::endl;
+  std::cout << "Note: It actually printed the empty character^^^^^^^^^^" << std::endl;
+  
 
 
   //Random numbers  
@@ -129,15 +139,43 @@ int main(){
 
   std::cout<< "We have exited the do-while loop because we got 5.\n" << std::endl; 
 
+  std::string theWord;
+  std::cout << "\nLets now do determine if a word is a palindrome." << std::endl;
+  std::cout << "Enter the word: ";
+  getline(std::cin, theWord );
 
+  //Case: Empty String
+  if(theWord.length() == 0 ){
+	  std::cout << "The word is empty and therefore it is a valid palindrome." << std::endl;
 
+  } else { //Case: We have an actual word, so lets determine if it is a palindrome
+
+	int i = 0;
+	int j = theWord.length()-1;
+ 
+ 	while (i<j){
+          
+	   
+          if(theWord[i] == theWord[j]){
+	     ++i;
+	     --j;
+	   } else { 
+	   	std::cout << theWord << " is NOT a valid palindrome" << std::endl;
+		return 1;	
+	   
+	   }	
+	
+	}
+        std::cout << theWord << " is a valid palindrome" << std::endl;
+
+  }
   
 
 
 
 
 
-
+ return 1;
 
 }
 
